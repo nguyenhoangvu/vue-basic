@@ -1,5 +1,4 @@
-// import { ref } from "vue";
-import axios from 'axios'
+import { request } from './common';
 import { cookie } from './cookie'
 
 const getToken = async (username, password) => {
@@ -11,12 +10,7 @@ const getToken = async (username, password) => {
       username: username,
       password: password
     }
-    let data = await axios({
-      method: "post",
-      url: 'http://10.0.2.15:6969/api/Identity/login-cms',
-      data: bodyJSON,
-      headers: { 'Content-Type': 'application/json; charset=UTF-8' }
-    });
+    let data = await request("post", 'http://10.0.2.15:6969/api/Identity/login-cms', '', bodyJSON)
 
     token = data.data.result.token;
     cookie(token)

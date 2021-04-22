@@ -9,7 +9,10 @@
     </thead>
     <tbody>
       <tr v-for="product in products" :key="product.nv">
-        <td>{{ product.nv }}</td>
+        <router-link :to="{ name: 'ProductInfo', params: { nv: product.nv } }">
+          <td>{{ product.nv }}</td>
+        </router-link>
+
         <td>{{ product.ten }}</td>
       </tr>
     </tbody>
